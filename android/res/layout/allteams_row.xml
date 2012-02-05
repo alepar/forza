@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent">
+    <TextView
+            android:id="@+id/allteams_row_id"
+            android:text="#"
+            android:gravity="right"
+            android:padding="3dip"/>
+    <TextView
+            android:id="@+id/allteams_row_teamname"
+            android:text="Team"
+            android:padding="3dip"/>
+    <TextView
+            android:id="@+id/allteams_row_lastlap"
+            android:text="Last"
+            android:padding="3dip"/>
+    <TextView
+            android:id="@+id/allteams_row_avglap"
+            android:text="Avg"
+            android:padding="3dip"/>
+    <TextView
+            android:id="@+id/allteams_row_delta"
+            android:text="Delta"
+            android:padding="3dip"/>
+</TableRow>

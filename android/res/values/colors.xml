@@ -1,0 +1,4 @@
+<resources>
+    <color name="table_header_background">#ffa0a0a0</color>
+    <color name="table_header_text">#ff202020</color>
+</resources>
