@@ -45,10 +45,12 @@ public class AllTeamsTable {
                 .setText(info.name);
         findCell(R.id.allteams_row_avglap, row)
                 .setText(formatTime(info.avgLap));
-        findCell(R.id.allteams_row_lastlap, row)
-                .setText(formatTime(info.lastLap));
         findCell(R.id.allteams_row_delta, row)
                 .setText(formatTime(info.delta));
+
+        final TextView lastLapCell = findCell(R.id.allteams_row_lastlap, row);
+        lastLapCell.setText(formatTime(info.lastLap));
+        lastLapCell.startAnimation(new BlinkAnimation(lastLapCell));
     }
 
     private static String formatTime(long time) {
