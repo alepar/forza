@@ -54,7 +54,7 @@ public class AllTeamsTable {
     }
 
     private static String formatTime(long time) {
-        return time < 0 ? "-" : String.format("%.3f", ((double) time) / 1000);
+        return time < 0 ? "-" : String.format("%.2f", ((double) time) / 1000);
     }
 
     private static TextView findCell(int allteams_row_teamname, TableRow row) {
