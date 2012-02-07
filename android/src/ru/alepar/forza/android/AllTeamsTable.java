@@ -5,6 +5,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,14 +14,17 @@ public class AllTeamsTable {
     private final TableLayout table;
     private final ViewFactory viewFactory;
     private final Map<Long, TableRow> teamRows;
+    private final Map<Long, TeamInfo> state;
 
     public AllTeamsTable(ViewFactory viewFactory) {
         this.viewFactory = viewFactory;
         this.table = viewFactory.inflate(TableLayout.class, R.layout.allteams_table);
         this.teamRows = new HashMap<Long, TableRow>();
+        this.state = new HashMap<Long, TeamInfo>();
     }
 
     public void updateTeamInfo(TeamInfo info) {
+        state.put(info.id, info);
         TableRow row = teamRows.get(info.id);
         if (row == null) {
             row = createRow();
@@ -59,6 +63,10 @@ public class AllTeamsTable {
 
     private static TextView findCell(int allteams_row_teamname, TableRow row) {
         return (TextView) row.findViewById(allteams_row_teamname);
+    }
+
+    public Collection<TeamInfo> getCurrentState() {
+        return state.values();
     }
 
 }

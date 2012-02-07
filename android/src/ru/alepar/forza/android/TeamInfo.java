@@ -1,7 +1,9 @@
 package ru.alepar.forza.android;
 
-public class TeamInfo {
-    
+import java.io.Serializable;
+
+public class TeamInfo implements Serializable {
+
     public final long id;
     public final String name;
     public final long lastLap;
