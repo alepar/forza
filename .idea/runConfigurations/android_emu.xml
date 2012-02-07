@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="android-emu" type="AndroidRunConfigurationType" factoryName="Android Application">
     <module name="android" />
-    <option name="ACTIVITY_CLASS" value="ru.alepar.forza.android.AllTeamsActivity" />
+    <option name="ACTIVITY_CLASS" value="ru.alepar.forza.android.ui.activities.AllTeamsActivity" />
     <option name="MODE" value="specific_activity" />
     <option name="DEPLOY" value="true" />
     <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
