@@ -1,9 +1,11 @@
-package ru.alepar.forza.android;
+package ru.alepar.forza.android.ui.activities;
 
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import ru.alepar.forza.android.R;
+import ru.alepar.forza.android.ui.core.ViewFactory;
 
 import java.util.Collection;
 import java.util.HashMap;

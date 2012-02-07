@@ -1,4 +1,4 @@
-package ru.alepar.forza.android;
+package ru.alepar.forza.android.ui.activities;
 
 import android.graphics.Color;
 import android.view.View;

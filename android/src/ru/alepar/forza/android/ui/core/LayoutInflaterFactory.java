@@ -1,4 +1,4 @@
-package ru.alepar.forza.android;
+package ru.alepar.forza.android.ui.core;
 
 import android.view.LayoutInflater;
 import android.view.View;

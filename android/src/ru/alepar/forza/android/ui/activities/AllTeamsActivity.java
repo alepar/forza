@@ -1,7 +1,8 @@
-package ru.alepar.forza.android;
+package ru.alepar.forza.android.ui.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import ru.alepar.forza.android.ui.core.LayoutInflaterFactory;
 
 import java.util.Collection;
 import java.util.Random;

@@ -4,7 +4,7 @@
           android:versionCode="1"
           android:versionName="1.0">
     <application android:label="@string/app_name">
-        <activity android:name=".AllTeamsActivity"
+        <activity android:name=".ui.activities.AllTeamsActivity"
                   android:label="@string/activity_all_teams"
                   android:launchMode="singleTask">
             <intent-filter>
