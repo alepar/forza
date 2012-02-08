@@ -1,5 +1,6 @@
 package ru.alepar.forza.android.ui.activities;
 
+import android.content.res.Resources;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -15,25 +16,49 @@ public class AllTeamsTable {
 
     private final TableLayout table;
     private final ViewFactory viewFactory;
-    private final Map<Long, TableRow> teamRows;
-    private final Map<Long, TeamInfo> state;
 
-    public AllTeamsTable(ViewFactory viewFactory) {
+    private final int colorOfRowBackground;
+    private final int colorOfRowBackgroundSelected;
+
+    private final Map<Long, TableRow> rows;
+    private final Map<Long, TeamInfo> infos;
+
+    private Long selectedTeamId;
+
+    public AllTeamsTable(ViewFactory viewFactory, Resources resources) {
         this.viewFactory = viewFactory;
         this.table = viewFactory.inflate(TableLayout.class, R.layout.allteams_table);
-        this.teamRows = new HashMap<Long, TableRow>();
-        this.state = new HashMap<Long, TeamInfo>();
+        this.rows = new HashMap<Long, TableRow>();
+        this.infos = new HashMap<Long, TeamInfo>();
+
+        this.colorOfRowBackground = resources.getColor(R.color.table_row_background);
+        this.colorOfRowBackgroundSelected = resources.getColor(R.color.table_row_background_selected);
     }
 
-    public void updateTeamInfo(TeamInfo info) {
-        state.put(info.id, info);
-        TableRow row = teamRows.get(info.id);
+    public void updateTeamInfo(final TeamInfo info) {
+        infos.put(info.id, info);
+        TableRow row = rows.get(info.id);
         if (row == null) {
             row = createRow();
-            teamRows.put(info.id, row);
+            rows.put(info.id, row);
             table.addView(row);
+            row.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    onSelectTeam(info.id);
+                    return true;
+                }
+            });
         }
         fillRowWith(info, row);
+    }
+
+    private void onSelectTeam(long teamId) {
+        if (selectedTeamId != null) {
+            rows.get(selectedTeamId).setBackgroundColor(colorOfRowBackground);
+        }
+        rows.get(teamId).setBackgroundColor(colorOfRowBackgroundSelected);
+        selectedTeamId = teamId;
     }
 
     private TableRow createRow() {
@@ -44,7 +69,7 @@ public class AllTeamsTable {
         return table;
     }
 
-    private static void fillRowWith(TeamInfo info, TableRow row) {
+    private void fillRowWith(TeamInfo info, TableRow row) {
         findCell(R.id.allteams_row_id, row)
                 .setText(String.valueOf(info.id));
         findCell(R.id.allteams_row_teamname, row)
@@ -56,6 +81,7 @@ public class AllTeamsTable {
 
         final TextView lastLapCell = findCell(R.id.allteams_row_lastlap, row);
         lastLapCell.setText(formatTime(info.lastLap));
+
         lastLapCell.startAnimation(new BlinkAnimation(lastLapCell));
     }
 
@@ -68,7 +94,7 @@ public class AllTeamsTable {
     }
 
     public Collection<TeamInfo> getCurrentState() {
-        return state.values();
+        return infos.values();
     }
 
 }

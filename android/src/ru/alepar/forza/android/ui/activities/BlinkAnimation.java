@@ -12,9 +12,9 @@ public class BlinkAnimation extends Animation {
 
     public BlinkAnimation(View view) {
         this.view = view;
+
         setInterpolator(new LinearInterpolator());
         setDuration(100L);
-//        setAnimationListener(new BlinkAnimationListener());
     }
 
     @Override
@@ -42,19 +42,12 @@ public class BlinkAnimation extends Animation {
     }
 
     private void fadeOut(double interpolatedTime) {
-        final int colorByte = 255 - (int) (interpolatedTime * 255);
-        view.setBackgroundColor(Color.rgb(colorByte, colorByte, colorByte));
-    }
-
-    private class BlinkAnimationListener implements AnimationListener {
-        public void onAnimationStart(Animation animation) {
-        }
-
-        public void onAnimationEnd(Animation animation) {
-            view.setBackgroundColor(Color.rgb(0, 0, 0));
-        }
-
-        public void onAnimationRepeat(Animation animation) {
+        if (interpolatedTime < 0.8) {
+            final int colorByte = 255 - (int) (interpolatedTime * 255);
+            view.setBackgroundColor(Color.rgb(colorByte, colorByte, colorByte));
+        } else {
+            view.setBackgroundColor(Color.TRANSPARENT);
         }
     }
+
 }

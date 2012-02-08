@@ -16,7 +16,7 @@ public class AllTeamsActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        table = new AllTeamsTable(new LayoutInflaterFactory(getLayoutInflater()));
+        table = new AllTeamsTable(new LayoutInflaterFactory(getLayoutInflater()), getResources());
         setContentView(table.getContentView());
 
         runMockData(table);
